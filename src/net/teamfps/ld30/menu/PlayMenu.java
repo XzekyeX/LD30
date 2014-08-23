@@ -25,9 +25,19 @@ public class PlayMenu extends Menu {
 	}
 
 	public PlayMenu init() {
-		worlds.add(new World(screen, Sprite.world_0));
-		worlds.add(new World(screen, Sprite.world_1));
-		worlds.add(new World(screen, Sprite.world_2));
+		List<Sprite> sprites = Sprite.loadFolder("/worlds/");
+		int size = sprites.size();
+		System.out.println("sprites.size: " + size);
+		if (size > 0) {
+			for (int i = 0; i < sprites.size(); i++) {
+				worlds.add(new World(screen, sprites.get(i)));
+				System.out.println("new world: " + sprites.get(i));
+			}
+		} else {
+			worlds.add(new World(screen, Sprite.world_0));
+			worlds.add(new World(screen, Sprite.world_1));
+			worlds.add(new World(screen, Sprite.world_2));
+		}
 		return this;
 	}
 

@@ -1,7 +1,13 @@
 package net.teamfps.ld30.gfx;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 
@@ -20,9 +26,9 @@ public class Sprite {
 
 	public static Sprite player = new Sprite("/player.png");
 
-	public static Sprite world_0 = new Sprite("/world_0.png");
-	public static Sprite world_1 = new Sprite("/world_1.png");
-	public static Sprite world_2 = new Sprite("/world_2.png");
+	public static Sprite world_0 = new Sprite("/worlds/world_0.png");
+	public static Sprite world_1 = new Sprite("/worlds/world_1.png");
+	public static Sprite world_2 = new Sprite("/worlds/world_2.png");
 
 	public static Sprite tile_spawn = new Sprite("/tile_spawn.png");
 	public static Sprite tile_portal = new Sprite("/tile_portal.png");
@@ -32,6 +38,36 @@ public class Sprite {
 	public Sprite(String path) {
 		this.path = path;
 		load();
+	}
+
+	public static List<Sprite> loadFolder(String path) {
+		List<Sprite> sprites = new ArrayList<Sprite>();
+		try {
+			URL url = Sprite.class.getResource(path);
+			if (url != null) {
+				URI uri = url.toURI();
+				if (uri != null) {
+					File f = new File(uri);
+					if (!f.mkdirs()) {
+						File[] files = f.listFiles();
+						int size = files.length;
+						for (int i = 0; i < size; i++) {
+							String name = files[i].getName().toLowerCase();
+							if (name.contains(".png")) {
+								sprites.add(new Sprite(path + "/" + name));
+								System.out.println("new image: " + name);
+							}
+						}
+					} else {
+						System.out.println("loadFolder(" + path + ")");
+						loadFolder(path);
+					}
+				}
+			}
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
+		return sprites;
 	}
 
 	private void load() {

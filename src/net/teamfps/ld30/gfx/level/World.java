@@ -1,14 +1,12 @@
 package net.teamfps.ld30.gfx.level;
 
-import java.util.List;
-
 import net.teamfps.ld30.gfx.Screen;
 import net.teamfps.ld30.gfx.Sprite;
 import net.teamfps.ld30.gfx.level.entity.Player;
-import net.teamfps.ld30.gfx.level.tile.PortalType;
-import net.teamfps.ld30.gfx.level.tile.SpikeTile;
 import net.teamfps.ld30.gfx.level.tile.GroundTile;
 import net.teamfps.ld30.gfx.level.tile.PortalTile;
+import net.teamfps.ld30.gfx.level.tile.PortalType;
+import net.teamfps.ld30.gfx.level.tile.SpikeTile;
 import net.teamfps.ld30.gfx.level.tile.Tile;
 
 /**

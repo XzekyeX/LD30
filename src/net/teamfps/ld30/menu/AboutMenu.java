@@ -1,7 +1,5 @@
 package net.teamfps.ld30.menu;
 
-import java.awt.Color;
-
 import net.teamfps.ld30.gfx.Button;
 import net.teamfps.ld30.gfx.Screen;
 
@@ -36,7 +34,7 @@ public class AboutMenu extends Menu {
 		int cw = (screen.width / 2) - 64;
 		mm.render(screen, cw, 64, 128, 32);
 		screen.fillRect(64, 160, screen.width - 128, screen.height - 230, 3, 0x00c6ff, 0xffffff, false);
-		String[] about = { "This game is made for ludum dare contest,", "in about 15 hours.", "By Zekye" };
+		String[] about = { "This game is made for ludum dare contest,", "in about 15 hours.", "Controls: ASDW And Space", "By Zekye." };
 		for (int i = 0; i < about.length; i++) {
 			screen.renderString(about[i], 20, 98, 200 + i * 20, 0xffffff, false);
 		}

@@ -2,12 +2,7 @@ package net.teamfps.ld30.gfx;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.util.ArrayList;
-import java.util.List;
-
 import net.teamfps.ld30.Camera;
-import net.teamfps.ld30.gfx.level.Level;
-import net.teamfps.ld30.gfx.level.World;
 import net.teamfps.ld30.menu.AboutMenu;
 import net.teamfps.ld30.menu.FailMenu;
 import net.teamfps.ld30.menu.MainMenu;
