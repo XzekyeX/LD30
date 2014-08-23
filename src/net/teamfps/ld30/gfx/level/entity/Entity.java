@@ -39,7 +39,7 @@ public class Entity {
 						solid = true;
 					}
 					if (t instanceof SpikeTile) {
-						hp -= 0.2D;
+						hp -= 0.02D;
 						System.out.println("hp: " + hp);
 					}
 				}

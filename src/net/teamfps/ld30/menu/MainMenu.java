@@ -11,11 +11,13 @@ public class MainMenu extends Menu {
 	private Button play;
 	private Button about;
 	private Button exit;
+	private Button custom;
 
 	public MainMenu(Screen screen) {
 		super(screen);
 		play = new Button("Play", 26, 0xffffff);
 		about = new Button("About", 26, 0xffffff);
+		custom = new Button("Worlds", 26, 0xffffff);
 		exit = new Button("Exit", 26, 0xffffff);
 	}
 
@@ -42,10 +44,14 @@ public class MainMenu extends Menu {
 		if (play.isPressedLeft() && delay == 0) {
 			delay = 20;
 			load();
-		}		
+		}
 		if (about.isPressedLeft() && delay == 0) {
 			delay = 20;
 			screen.setMenu(screen.getAboutMenu());
+		}
+		if (custom.isPressedLeft() && delay == 0) {
+			delay = 20;
+			screen.setMenu(screen.getWorldMenu());
 		}
 		if (exit.isPressedLeft()) {
 			System.exit(1);
@@ -56,8 +62,9 @@ public class MainMenu extends Menu {
 	public void render() {
 		int cw = screen.width / 2 - 64;
 		play.render(screen, cw, 64, 128, 32);
-		about.render(screen, cw, 64 + 48, 128, 32);
-		exit.render(screen, cw, 64 + 96, 128, 32);
+		custom.render(screen, cw, 64 + (48 * 1), 128, 32);
+		about.render(screen, cw, 64 + (48 * 2), 128, 32);
+		exit.render(screen, cw, 64 + (48 * 3), 128, 32);
 	}
 
 }

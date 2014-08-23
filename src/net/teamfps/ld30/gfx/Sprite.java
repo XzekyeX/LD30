@@ -3,9 +3,6 @@ package net.teamfps.ld30.gfx;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,30 +39,21 @@ public class Sprite {
 
 	public static List<Sprite> loadFolder(String path) {
 		List<Sprite> sprites = new ArrayList<Sprite>();
-		try {
-			URL url = Sprite.class.getResource(path);
-			if (url != null) {
-				URI uri = url.toURI();
-				if (uri != null) {
-					File f = new File(uri);
-					if (!f.mkdirs()) {
-						File[] files = f.listFiles();
-						int size = files.length;
-						for (int i = 0; i < size; i++) {
-							String name = files[i].getName().toLowerCase();
-							if (name.contains(".png")) {
-								sprites.add(new Sprite(path + "/" + name));
-								System.out.println("new image: " + name);
-							}
-						}
-					} else {
-						System.out.println("loadFolder(" + path + ")");
-						loadFolder(path);
-					}
+		String appdata = System.getenv("APPDATA");
+		File f = new File(appdata + "/.teamfps/worlds/");
+		if (!f.mkdirs()) {
+			File[] files = f.listFiles();
+			int size = files.length;
+			for (int i = 0; i < size; i++) {
+				String name = files[i].getName().toLowerCase();
+				if (name.contains(".png")) {
+					sprites.add(new Sprite(path + "/" + name));
+					System.out.println("new image: " + name);
 				}
 			}
-		} catch (URISyntaxException e) {
-			e.printStackTrace();
+		} else {
+			System.out.println("loadFolder(" + path + ")");
+			loadFolder(path);
 		}
 		return sprites;
 	}

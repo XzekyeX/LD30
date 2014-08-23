@@ -12,6 +12,7 @@ import net.teamfps.ld30.gfx.level.entity.Entity;
 import net.teamfps.ld30.gfx.level.entity.Player;
 import net.teamfps.ld30.gfx.level.tile.PortalTile;
 import net.teamfps.ld30.gfx.level.tile.PortalType;
+import net.teamfps.ld30.gfx.level.tile.SpikeTile;
 import net.teamfps.ld30.gfx.level.tile.Tile;
 
 /**
@@ -166,7 +167,7 @@ public class Level {
 			int xt = ((x + xa) + c % 2 * w + 64) / 64;
 			int yt = ((y + ya + 4) + c / 2 * h + 64) / 64;
 			Tile t = getTile(xt - 1, yt - 1);
-			if (t != null) {
+			if (t != null && !(t instanceof SpikeTile)) {
 				return t;
 			}
 		}

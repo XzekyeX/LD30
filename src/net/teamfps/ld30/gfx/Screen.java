@@ -2,12 +2,14 @@ package net.teamfps.ld30.gfx;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+
 import net.teamfps.ld30.Camera;
 import net.teamfps.ld30.menu.AboutMenu;
 import net.teamfps.ld30.menu.FailMenu;
 import net.teamfps.ld30.menu.MainMenu;
 import net.teamfps.ld30.menu.Menu;
 import net.teamfps.ld30.menu.PlayMenu;
+import net.teamfps.ld30.menu.WorldMenu;
 
 /**
  * @author Zekye
@@ -19,6 +21,7 @@ public class Screen extends Bitmap {
 	private Menu mainmenu;
 	private Menu failmenu;
 	private Menu aboutmenu;
+	private Menu worldmenu;
 
 	/**
 	 * @param width
@@ -30,6 +33,7 @@ public class Screen extends Bitmap {
 		playmenu = new PlayMenu(this);
 		failmenu = new FailMenu(this);
 		aboutmenu = new AboutMenu(this);
+		worldmenu = new WorldMenu(this);
 		menu = mainmenu;
 	}
 
@@ -81,5 +85,12 @@ public class Screen extends Bitmap {
 	 */
 	public Menu getAboutMenu() {
 		return aboutmenu;
+	}
+
+	/**
+	 * @return
+	 */
+	public Menu getWorldMenu() {
+		return worldmenu;
 	}
 }

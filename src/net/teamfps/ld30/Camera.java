@@ -1,6 +1,5 @@
 package net.teamfps.ld30;
 
-import java.awt.event.KeyEvent;
 
 /**
  * @author Zekye
@@ -9,7 +8,6 @@ import java.awt.event.KeyEvent;
 public class Camera {
 	private int x;
 	private int y;
-	private int speed = 3;
 
 	public Camera(int x, int y) {
 		this.x = x;
