@@ -3,6 +3,7 @@ package net.teamfps.ld30.gfx;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,7 +48,8 @@ public class Sprite {
 			for (int i = 0; i < size; i++) {
 				String name = files[i].getName().toLowerCase();
 				if (name.contains(".png")) {
-					sprites.add(new Sprite(path + "/" + name));
+					String full_path = path + "" + name;
+					sprites.add(new Sprite(full_path));
 					System.out.println("new image: " + name);
 				}
 			}
@@ -60,13 +62,23 @@ public class Sprite {
 
 	private void load() {
 		try {
-			img = ImageIO.read(getClass().getResource(path));
-			width = img.getWidth();
-			height = img.getHeight();
-			pixels = new int[width * height];
-			img.getRGB(0, 0, width, height, pixels, 0, width);
+			URL url = getClass().getResource(path);
+			if (url != null) {
+				img = ImageIO.read(url);
+				width = img.getWidth();
+				height = img.getHeight();
+				pixels = new int[width * height];
+				img.getRGB(0, 0, width, height, pixels, 0, width);
+			} else {
+				img = ImageIO.read(new File(path));
+				width = img.getWidth();
+				height = img.getHeight();
+				pixels = new int[width * height];
+				img.getRGB(0, 0, width, height, pixels, 0, width);
+			}
 		} catch (IOException e) {
-			e.printStackTrace();
+			// e.printStackTrace();
+			System.err.println("Exception: " + e);
 		}
 	}
 

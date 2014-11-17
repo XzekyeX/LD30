@@ -15,7 +15,7 @@ import net.teamfps.ld30.gfx.Screen;
  */
 public class Main extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
-	private static JFrame f = new JFrame("LD30 - Connected Worlds");
+	private static JFrame f = new JFrame("LD30 - Connected Worlds! Fixed!");
 	private static int width = 640; // 1024
 	private static int height = 480; // 720
 	private Thread thread;

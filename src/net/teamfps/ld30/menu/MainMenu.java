@@ -51,7 +51,7 @@ public class MainMenu extends Menu {
 		}
 		if (custom.isPressedLeft() && delay == 0) {
 			delay = 20;
-			screen.setMenu(screen.getWorldMenu());
+			screen.setMenu(((WorldMenu) screen.getWorldMenu()).init());
 		}
 		if (exit.isPressedLeft()) {
 			System.exit(1);

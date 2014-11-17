@@ -19,9 +19,11 @@ public class Input implements KeyListener, MouseListener, MouseMotionListener, M
 	public static boolean MR = false;
 	public static int MX = -1;
 	public static int MY = -1;
+	public static int SCROLL = 0;
 
 	@Override
 	public void mouseWheelMoved(MouseWheelEvent e) {
+		SCROLL = e.getWheelRotation();
 	}
 
 	@Override
